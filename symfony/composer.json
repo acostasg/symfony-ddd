@@ -13,7 +13,13 @@
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.14"
+        "symfony/maker-bundle": "^1.14",
+        "phpunit/phpunit": "^9.2",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "psalm/plugin-phpunit": "^0.10",
+        "vimeo/psalm": "^3.13",
+        "friendsofphp/php-cs-fixer": "^2.17.1"
     },
     "config": {
         "preferred-install": {
