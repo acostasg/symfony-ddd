@@ -48,3 +48,6 @@ docker exec -ti symfony-ddd_php_1 php vendor/bin/psalm --show-info=true
 ```
 docker exec -ti symfony-ddd_php_1 php vendor/bin/php-cs-fixer fix src
 ```
+
+## References
+https://www.fabian-keller.de/blog/domain-driven-design-with-symfony-a-folder-structure/
