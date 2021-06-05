@@ -4,7 +4,9 @@
 namespace App\User\Api;
 
 
-class UserApiBundle
+use App\Core\Infrastucture\Bundle\CompactBundle;
+
+class UserApiBundle extends CompactBundle
 {
 
 }

@@ -5,7 +5,9 @@ namespace App\Order\Infrastructure;
 
 
 
-class OrderInfrastructureBundle
+use App\Core\Infrastucture\Bundle\CompactBundle;
+
+class OrderInfrastructureBundle extends CompactBundle
 {
 
 }

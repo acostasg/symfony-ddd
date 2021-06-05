@@ -28,7 +28,12 @@ User and password of the database is the `env` file at the root of the project.
 127.0.0.1 dev.app.com
 ```
 
-4.- Tools for testing, fixed and evalute code.
+4.- Execute composer install
+```
+docker exec -ti symfony-ddd_php_1 composer install
+```
+
+5.- Tools for testing, fixed and evalute code.
 
 For execute PHPUnit, PHPStan, Psalm and PHP-cs-fixer in development time
 

@@ -25,7 +25,7 @@ services:
         image: mysql:8.0.20
         command: --default-authentication-plugin=mysql_native_password
         volumes:
-            - "db_app:/var/lib/mysql"
+            - "database:/var/lib/mysql"
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_DATABASE: ${MYSQL_DATABASE}

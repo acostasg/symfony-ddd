@@ -5,7 +5,9 @@ namespace App\User\Infrastructure;
 
 
 
-class UserInfrastructureBundle
+use App\Core\Infrastucture\Bundle\CompactBundle;
+
+class UserInfrastructureBundle extends CompactBundle
 {
 
 }

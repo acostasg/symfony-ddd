@@ -4,7 +4,9 @@
 namespace App\Order\Api;
 
 
-class OrderApiBundle
+use App\Core\Infrastucture\Bundle\CompactBundle;
+
+class OrderApiBundle extends CompactBundle
 {
 
 }
