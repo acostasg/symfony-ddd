@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class GetAllClientsCommandTest extends TestCase
 {
+    /** @group userBundle */
     public function testGetAllClient()
     {
         $getAllClientsCommand = new GetAllClientsCommand(

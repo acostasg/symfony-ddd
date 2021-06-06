@@ -36,13 +36,24 @@ docker exec -ti symfony-ddd_php_1 composer update
 docker exec -ti symfony-ddd_php_1 composer install
 ```
 
+5.- Execute migrations
+
+View status:
+```
+docker exec -ti symfony-ddd_php_1 php bin/console doctrine:migrations:status
+```
+execute all migrations pending:
+```
+docker exec -ti symfony-ddd_php_1 php bin/console doctrine:migrations:migrate 
+```
+
 Default path for bundle:
 ```
 http://dev.app.com/user/
 http://dev.app.com/order/
 ```
 
-5.- Tools for testing, fixed and evalute code.
+6.- Tools for testing, fixed and evalute code.
 
 For execute PHPUnit, PHPStan, Psalm and PHP-cs-fixer in development time
 
