@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Core\Infrastucture\Bundle;
 
 use Symfony\Component\Config\FileLocator;
@@ -11,8 +10,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
- * Provides an {@link ExtensionInterface} and {@link PrependExtensionInterface} implementation for {@link
- * CompactBundle}s. Defines conventions to be used among bundles.
+ * Provides an {@link ExtensionInterface} and {@link PrependExtensionInterface} implementation for {@link * CompactBundle}s. Defines conventions to be used among bundles.
  */
 class CompactBundleExtension implements ExtensionInterface, PrependExtensionInterface
 {
@@ -27,17 +25,17 @@ class CompactBundleExtension implements ExtensionInterface, PrependExtensionInte
     /**
      * {@inheritdoc}
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
-        $configDir = new FileLocator($this->bundle->getPath() . '/Resources/config');
+        $configDir = new FileLocator($this->bundle->getPath().'/Resources/config');
         $loader = new YamlFileLoader($container, $configDir);
-        $loader->load("services.yml");
+        $loader->load('services.yml');
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getAlias()
+    public function getAlias(): string
     {
         return Container::underscore($this->bundle->getName());
     }
@@ -53,66 +51,44 @@ class CompactBundleExtension implements ExtensionInterface, PrependExtensionInte
     /**
      * {@inheritdoc}
      */
-    public function getNamespace()
+    public function getNamespace(): string
     {
-        return 'http://example.org/schema/dic/' . $this->getAlias();
+        return 'http://example.org/schema/dic/'.$this->getAlias();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $this->prependDoctrineMappingConfiguration($container);
-        $this->prependJmsSerializerConfiguration($container);
     }
 
     /**
      * Configures doctrine to add mapping files if doctrine config files are stored within this compact bundle in:
-     *  <Bundle>/Resources/config/doctrine
-     *
-     * @param ContainerBuilder $container
+     *  <Bundle>/Resources/config/doctrine.
      */
-    private function prependDoctrineMappingConfiguration(ContainerBuilder $container)
+    private function prependDoctrineMappingConfiguration(ContainerBuilder $container): void
     {
         $doctrineConfigs = sprintf('%s/Resources/config/doctrine', $this->bundle->getPath());
         if (is_dir($doctrineConfigs)) {
-            $ns = $this->bundle->getNamespace();
+            $namespace = $this->bundle->getNamespace();
             $container->prependExtensionConfig('doctrine', [
                 'orm' => [
                     'mappings' => [
                         $this->bundle->getName() => [
                             'type' => 'yml',
                             'dir' => 'Resources/config/doctrine',
-                            'prefix' => substr($ns, 0, strrpos($ns, '\\')) . '\\Domain',
+                            'prefix' => substr($namespace, 0, $this->getPositionForNamespace($namespace)).'\\Domain',
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ]);
         }
     }
 
-    /**
-     * Configures JMS serializer to add mapping files if serializer config files are stored within this compact bundle in
-     *  <Bundle>/Resources/config/serializer
-     *
-     * @param ContainerBuilder $container
-     */
-    private function prependJmsSerializerConfiguration(ContainerBuilder $container)
+    private function getPositionForNamespace(string $namespace): int
     {
-        $serializerConfigs = sprintf('%s/Resources/config/serializer', $this->bundle->getPath());
-        if (is_dir($serializerConfigs)) {
-            $ns = $this->bundle->getNamespace();
-            $container->prependExtensionConfig('jms_serializer', [
-                'metadata' => [
-                    'directories' => [
-                        $this->bundle->getName() => [
-                            'namespace_prefix' => substr($ns, 0, strrpos($ns, '\\')),
-                            'path' => sprintf('@%s/Resources/config/serializer', $this->bundle->getName()),
-                        ],
-                    ]
-                ]
-            ]);
-        }
+        return (int) strrpos($namespace, '\\');
     }
 }

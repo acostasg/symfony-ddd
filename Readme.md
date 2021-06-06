@@ -2,8 +2,10 @@
 
 ## Description
 
-This project is sample stack with Symfony 5 into Docker containers using Docker-compose,
+This project is sample stack Domain Driven Design (DDD) with Symfony 5 into Docker containers using Docker-compose,
 using MySQL 8 as a database.
+
+![Alt text](ddd.png?raw=true "DDD")
 
 ## Installation
 
@@ -30,6 +32,7 @@ User and password of the database is the `env` file at the root of the project.
 
 4.- Execute composer install
 ```
+docker exec -ti symfony-ddd_php_1 composer update
 docker exec -ti symfony-ddd_php_1 composer install
 ```
 

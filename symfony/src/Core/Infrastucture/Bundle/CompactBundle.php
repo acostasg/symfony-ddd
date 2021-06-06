@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Core\Infrastucture\Bundle;
-
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -15,7 +13,7 @@ abstract class CompactBundle extends Bundle
     /**
      * {@inheritdoc}
      */
-    public function getContainerExtension()
+    public function getContainerExtension(): CompactBundleExtension
     {
         return new CompactBundleExtension($this);
     }

@@ -1,0 +1,3 @@
+index:
+    path: /
+    controller: App\Order\Presentation\Controller\DefaultController::index

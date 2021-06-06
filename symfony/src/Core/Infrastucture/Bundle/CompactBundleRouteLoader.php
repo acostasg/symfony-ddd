@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Core\Infrastucture\Bundle;
 
 use Psr\Log\LoggerInterface;
@@ -28,8 +27,9 @@ class CompactBundleRouteLoader extends Loader
     /**
      * Provide access to kernel in order to load bundle routes.
      */
-    public function __construct(KernelInterface $kernel, LoggerInterface $log)
+    public function __construct(string $env, KernelInterface $kernel, LoggerInterface $log)
     {
+        parent::__construct($env);
         $this->kernel = $kernel;
         $this->log = $log;
     }
@@ -37,7 +37,7 @@ class CompactBundleRouteLoader extends Loader
     /**
      * {@inheritdoc}
      */
-    public function load($resource, $type = null)
+    public function load($resource, string $type = null): RouteCollection
     {
         if (true === $this->loaded) {
             throw new \RuntimeException('Do not add the "convention" loader twice');
@@ -48,27 +48,28 @@ class CompactBundleRouteLoader extends Loader
             if (!$bundle instanceof CompactBundle) {
                 continue;
             }
-            $routing = sprintf("%s/Resources/config/routing.yml", $bundle->getPath());
+            $routing = sprintf('%s/Resources/config/routing.yml', $bundle->getPath());
 
             if (!file_exists($routing)) {
                 $this->log->debug('Compact bundle "{bundle}" has no routes defined.', [
-                    'bundle' => $bundle->getName()
+                    'bundle' => $bundle->getName(),
                 ]);
                 continue;
             }
 
             $collection->addCollection($this->import($routing, 'yaml'));
             $this->log->debug('Loaded routes for compact bundle "{bundle}".', [
-                'bundle' => $bundle->getName()
+                'bundle' => $bundle->getName(),
             ]);
         }
+
         return $collection;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function supports($resource, $type = null)
+    public function supports($resource, string $type = null): bool
     {
         return 'convention' === $type;
     }
