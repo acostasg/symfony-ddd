@@ -14,10 +14,11 @@ class Kernel extends BaseKernel
     use MicroKernelTrait;
 
     private const CONFIG_EXTS = '.{php,xml,yaml,yml}';
+    private const CONFIG_BUNDLES_PHP = '/config/bundles.php';
 
     public function registerBundles(): iterable
     {
-        $contents = require $this->getProjectDir().'/config/bundles.php';
+        $contents = require $this->getProjectDir().self::CONFIG_BUNDLES_PHP;
         foreach ($contents as $class => $envs) {
             if ($envs[$this->environment] ?? $envs['all'] ?? false) {
                 yield new $class();
@@ -32,7 +33,7 @@ class Kernel extends BaseKernel
 
     protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader): void
     {
-        $c->addResource(new FileResource($this->getProjectDir().'/config/bundles.php'));
+        $c->addResource(new FileResource($this->getProjectDir().self::CONFIG_BUNDLES_PHP));
         $c->setParameter('container.dumper.inline_class_loader', \PHP_VERSION_ID < 70400 || !ini_get('opcache.preload'));
         $c->setParameter('container.dumper.inline_factories', true);
         $confDir = $this->getProjectDir().'/config';

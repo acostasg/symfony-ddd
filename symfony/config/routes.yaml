@@ -1,6 +1,6 @@
-acme_demo_user:
-    resource: "../src/User/Resources/config/routes.yaml"
-    prefix: /user
-acme_demo_vehicles:
+app_order_bundle:
     resource: "../src/Order/Resources/config/routes.yaml"
     prefix: /order
+app_user_bundle:
+    resource: "../src/User/Resources/config/routes.yaml"
+    prefix: /user

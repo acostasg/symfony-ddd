@@ -27,9 +27,8 @@ class CompactBundleRouteLoader extends Loader
     /**
      * Provide access to kernel in order to load bundle routes.
      */
-    public function __construct(string $env, KernelInterface $kernel, LoggerInterface $log)
+    public function __construct(KernelInterface $kernel, LoggerInterface $log)
     {
-        parent::__construct($env);
         $this->kernel = $kernel;
         $this->log = $log;
     }

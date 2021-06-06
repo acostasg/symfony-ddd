@@ -9,7 +9,7 @@ class DefaultController extends AbstractController
 {
     public function index(): Response
     {
-        return $this->render('../Twig/index.html.twig', [
+        return $this->render('@User/index.html.twig', [
             'title' => 'Default User Page',
             'type' => 'User',
             'text' => 'Test Description',

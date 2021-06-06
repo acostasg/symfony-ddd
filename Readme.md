@@ -36,6 +36,12 @@ docker exec -ti symfony-ddd_php_1 composer update
 docker exec -ti symfony-ddd_php_1 composer install
 ```
 
+Default path for bundle:
+```
+http://dev.app.com/order/
+http://dev.app.com/user/
+```
+
 5.- Tools for testing, fixed and evalute code.
 
 For execute PHPUnit, PHPStan, Psalm and PHP-cs-fixer in development time
