@@ -6,3 +6,20 @@
 parameters:
 
 services:
+    # autowiring
+    App\User\Domain\Repository\UserRepositoryInterface:
+        class: App\User\Infrastructure\Repository\InMemory\InMemoryUserRepository
+
+    App\User\Domain\Command\GetAllUsersCommand:
+        class: App\User\Domain\Command\GetAllUsersCommand
+        arguments:
+            $userRepository: App\User\Domain\Repository\UserRepositoryInterface
+
+    App\User\Domain\Repository\ClientRepositoryInterface:
+        class: App\User\Infrastructure\Repository\InMemory\InMemoryClientRepository
+
+    App\User\Domain\Command\GetAllClientsCommand:
+        class: App\User\Domain\Command\GetAllClientsCommand
+        arguments:
+            $clientRepository: App\User\Domain\Repository\ClientRepositoryInterface
+

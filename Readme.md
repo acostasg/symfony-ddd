@@ -38,8 +38,8 @@ docker exec -ti symfony-ddd_php_1 composer install
 
 Default path for bundle:
 ```
-http://dev.app.com/order/
 http://dev.app.com/user/
+http://dev.app.com/order/
 ```
 
 5.- Tools for testing, fixed and evalute code.

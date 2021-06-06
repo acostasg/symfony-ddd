@@ -7,5 +7,22 @@
 
 <h1>{{ type }}</h1>
 {{ text }}
+
+<h2>Users</h2>
+<ul>
+{% for user in users %}
+    <li>{{ user.getFirstName|e }} {{ user.getLastName|e }}</li>
+{% endfor %}
+</ul>
+
+<h2>Clients</h2>
+<ul>
+    {% for client in clients %}
+        <li>
+            {{ client.getFirstName|e }} {{ client.getLastName|e }}
+            <a href="mailto:{{ client.getMail|e }}">{{ client.getMail|e }}</a>
+        </li>
+    {% endfor %}
+</ul>
 </body>
 </html>
