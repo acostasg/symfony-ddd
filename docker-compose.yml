@@ -15,10 +15,13 @@ services:
         build:
             context: .
             dockerfile: docker/nginx/Dockerfile
-        volumes:
-            - ./symfony/:/var/www/symfony/
+        volumes_from:
+            - php
         ports:
             - 80:80
+        depends_on:
+            - php
+            - database
         networks:
             - app_network
     database:
