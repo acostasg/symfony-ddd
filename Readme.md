@@ -5,7 +5,7 @@
 This project is sample stack Domain Driven Design (DDD) with Symfony 5 into Docker containers using Docker-compose,
 using MySQL 8 as a database.
 
-![Alt text](ddd.png?raw=true "DDD")
+![DDD](img/ddd.png?raw=true "DDD")
 
 ## Installation
 
@@ -73,6 +73,8 @@ docker exec -ti symfony-ddd_php_1 php vendor/bin/psalm --show-info=true
 ```
 docker exec -ti symfony-ddd_php_1 php vendor/bin/php-cs-fixer fix src
 ```
+Project:
+![PHPStorm](img/PHPStorm.png?raw=true "DDD")
 
 ## References
 https://www.fabian-keller.de/blog/domain-driven-design-with-symfony-a-folder-structure/
