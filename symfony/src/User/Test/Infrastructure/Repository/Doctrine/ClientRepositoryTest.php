@@ -2,7 +2,6 @@
 
 namespace App\User\Test\Infrastructure\Repository\Doctrine;
 
-use _HumbugBoxa991b62ce91e\Nette\Neon\Exception;
 use App\User\Domain\Model\Factory\ClientFactory;
 use App\User\Domain\Repository\Exception\ErrorPersistEntityException;
 use App\User\Domain\Repository\Exception\ErrorRemoveEntityException;
@@ -13,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Persisters\Entity\EntityPersister;
 use Doctrine\ORM\UnitOfWork;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 class ClientRepositoryTest extends TestCase
