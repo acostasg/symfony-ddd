@@ -5,6 +5,8 @@ namespace App\User\Domain\Repository;
 use App\User\Domain\Model\Client;
 use App\User\Domain\Model\Collection\ClientCollection;
 use App\User\Domain\Repository\Exception\EntityNotFoundException;
+use App\User\Domain\Repository\Exception\ErrorPersistEntityException;
+use App\User\Domain\Repository\Exception\ErrorRemoveEntityException;
 use App\User\Domain\ValueObject\UserId;
 
 interface ClientRepositoryInterface
@@ -12,11 +14,17 @@ interface ClientRepositoryInterface
     /**
      * @throws EntityNotFoundException
      */
-    public function find(UserId $userId): Client;
+    public function client(UserId $userId): Client;
 
-    public function findAll(): ClientCollection;
+    public function all(): ClientCollection;
 
-    public function add(Client $user): void;
+    /**
+     * @throws ErrorPersistEntityException
+     */
+    public function add(Client $client): void;
 
-    public function remove(Client $user): void;
+    /**
+     * @throws ErrorRemoveEntityException
+     */
+    public function remove(Client $client): void;
 }

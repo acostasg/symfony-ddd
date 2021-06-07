@@ -15,19 +15,19 @@ final class Version20210607000105 extends AbstractMigration
 {
 
     CONST TABLE_NAME_USER = 'User';
-    CONST TABLE_NAME_CLIENT = 'Client';
+    CONST TABLE_NAME_CLIENT = 'ClientMapper';
 
 
     public function getDescription() : string
     {
-        return 'Generate data for Client and User table';
+        return 'Generate data for ClientMapper and User table';
     }
 
     public function up(Schema $schema) : void
     {
         if($schema->hasTable(self::TABLE_NAME_CLIENT)){
             $this->addSql(
-                "INSERT INTO app_db.Client (id, firstName, lastName, mail)
+                "INSERT INTO app_db.ClientMapper (id, firstName, lastName, mail)
                                VALUES(
                                       '".$this->generateUuid('8CE05088-ED1F-43E9-A415-3B3792655A9B')."',
                                       'Joan',
@@ -35,7 +35,7 @@ final class Version20210607000105 extends AbstractMigration
                                       )
                            ");
             $this->addSql(
-                "INSERT INTO app_db.Client (id, firstName, lastName, mail)
+                "INSERT INTO app_db.ClientMapper (id, firstName, lastName, mail)
                                 VALUES(
                                        '".$this->generateUuid('62A0CEB4-0403-4AA6-A6CD-1EE808AD4D23')."',
                                        'Jose',

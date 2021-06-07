@@ -37,7 +37,7 @@ class InMemoryUserRepository implements UserRepositoryInterface
     /**
      * @throws EntityNotFoundException
      */
-    public function find(UserId $userId): User
+    public function user(UserId $userId): User
     {
         foreach ($this->users as $user) {
             if ($user->getId()->getValue() == $userId->getValue()) {
@@ -47,7 +47,7 @@ class InMemoryUserRepository implements UserRepositoryInterface
         throw new EntityNotFoundException();
     }
 
-    public function findAll(): UserCollection
+    public function all(): UserCollection
     {
         return $this->users;
     }

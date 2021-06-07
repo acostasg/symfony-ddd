@@ -20,6 +20,6 @@ class GetAllUsersCommand implements CommandInterface
 
     public function execute(): UserCollection
     {
-        return $this->userRepository->findAll();
+        return $this->userRepository->all();
     }
 }

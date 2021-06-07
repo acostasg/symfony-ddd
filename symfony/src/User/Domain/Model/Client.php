@@ -12,7 +12,7 @@ class Client extends AbstractModel
     private string $mail;
 
     /**
-     * Client constructor.
+     * ClientMapper constructor.
      */
     public function __construct(User $user, string $mail)
     {

@@ -13,11 +13,11 @@ use Doctrine\Migrations\AbstractMigration;
 final class Version20210606232523 extends AbstractMigration
 {
 
-    CONST TABLE_NAME_CLIENT = 'Client';
+    CONST TABLE_NAME_CLIENT = 'ClientMapper';
 
     public function getDescription() : string
     {
-        return 'Create Table Client';
+        return 'Create Table ClientMapper';
     }
 
     public function up(Schema $schema) : void

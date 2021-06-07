@@ -19,6 +19,6 @@ class GetAllClientsCommand
 
     public function execute(): ClientCollection
     {
-        return $this->clientRepository->findAll();
+        return $this->clientRepository->all();
     }
 }

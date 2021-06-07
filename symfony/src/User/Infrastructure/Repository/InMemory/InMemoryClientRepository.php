@@ -41,7 +41,7 @@ class InMemoryClientRepository implements ClientRepositoryInterface
     /**
      * @throws EntityNotFoundException
      */
-    public function find(UserId $userId): Client
+    public function client(UserId $userId): Client
     {
         foreach ($this->clients as $client) {
             if ($client->getId()->getValue() == $userId->getValue()) {
@@ -51,7 +51,7 @@ class InMemoryClientRepository implements ClientRepositoryInterface
         throw new EntityNotFoundException();
     }
 
-    public function findAll(): ClientCollection
+    public function all(): ClientCollection
     {
         return $this->clients;
     }

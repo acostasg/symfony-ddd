@@ -8,7 +8,9 @@ parameters:
 services:
     # autowiring
     App\User\Domain\Repository\UserRepositoryInterface:
-        class: App\User\Infrastructure\Repository\InMemory\InMemoryUserRepository
+        class: App\User\Infrastructure\Repository\Doctrine\UserRepository
+        factory: [ '@doctrine.orm.entity_manager', getRepository ]
+        arguments: [ App\User\Infrastructure\Repository\Doctrine\Mapping\UserMapper ]
 
     App\User\Domain\Command\GetAllUsersCommand:
         class: App\User\Domain\Command\GetAllUsersCommand
@@ -16,7 +18,9 @@ services:
             $userRepository: App\User\Domain\Repository\UserRepositoryInterface
 
     App\User\Domain\Repository\ClientRepositoryInterface:
-        class: App\User\Infrastructure\Repository\InMemory\InMemoryClientRepository
+        class: App\User\Infrastructure\Repository\Doctrine\ClientRepository
+        factory: [ '@doctrine.orm.entity_manager', getRepository ]
+        arguments: [ App\User\Infrastructure\Repository\Doctrine\Mapping\ClientMapper ]
 
     App\User\Domain\Command\GetAllClientsCommand:
         class: App\User\Domain\Command\GetAllClientsCommand
