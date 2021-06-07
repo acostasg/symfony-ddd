@@ -13,7 +13,7 @@ use Doctrine\Migrations\AbstractMigration;
 final class Version20210606232523 extends AbstractMigration
 {
 
-    CONST TABLE_NAME = 'Client';
+    CONST TABLE_NAME_CLIENT = 'Client';
 
     public function getDescription() : string
     {
@@ -22,10 +22,12 @@ final class Version20210606232523 extends AbstractMigration
 
     public function up(Schema $schema) : void
     {
-        if(!$schema->hasTable(self::TABLE_NAME)){
-            $table = $schema->createTable(self::TABLE_NAME);
-            $table->addColumn('id', 'integer', array(
-                'autoincrement' => true
+        if(!$schema->hasTable(self::TABLE_NAME_CLIENT)){
+
+            $table = $schema->createTable(self::TABLE_NAME_CLIENT);
+            $table->addColumn('id', 'uuid', array(
+                'nullable' => false,
+                'unique' => true
             ));
             $table->setPrimaryKey(array('id'));
             $table->addColumn('firstName', 'string', array(
@@ -40,15 +42,14 @@ final class Version20210606232523 extends AbstractMigration
                 'nullable' => false,
                 'length' => 150
             ));
-
         }
 
     }
 
     public function down(Schema $schema) : void
     {
-        if($schema->hasTable(self::TABLE_NAME)){
-            $schema->dropTable(self::TABLE_NAME);
+        if($schema->hasTable(self::TABLE_NAME_CLIENT)){
+            $schema->dropTable(self::TABLE_NAME_CLIENT);
         }
 
     }
