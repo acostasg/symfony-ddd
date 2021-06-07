@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 class GetAllClientsCommandTest extends TestCase
 {
     /** @group userBundle */
-    public function testGetAllClient()
+    public function testGetAllClient(): void
     {
         $getAllClientsCommand = new GetAllClientsCommand(
             new InMemoryClientRepository()

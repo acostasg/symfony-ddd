@@ -37,14 +37,15 @@ class ClientMapper
      */
     private string $mail;
 
-    public function __construct(Client $client = null)
+    /**
+     * ClientMapper constructor.
+     */
+    public function __construct(Client $client)
     {
-        if (null != $client) {
-            $this->id = $client->getId()->getValue();
-            $this->firstName = $client->getFirstName();
-            $this->lastName = $client->getLastName();
-            $this->mail = $client->getMail();
-        }
+        $this->id = $client->getId()->getValue();
+        $this->firstName = $client->getFirstName();
+        $this->lastName = $client->getLastName();
+        $this->mail = $client->getMail();
     }
 
     public function getId(): string

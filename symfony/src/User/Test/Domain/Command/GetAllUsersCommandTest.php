@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 class GetAllUsersCommandTest extends TestCase
 {
     /** @group userBundle */
-    public function testGetAllUsersExecute()
+    public function testGetAllUsersExecute(): void
     {
         $getAllUsersCommand = new GetAllUsersCommand(
             new InMemoryUserRepository()
